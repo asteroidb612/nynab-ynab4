@@ -1,6 +1,6 @@
-import pdb
-import pandas as pd
-import sys
+import pandas as pd 
+import sys, os
+
 
 #The order NYNAB exports in
 columns = ["Account","Date","Payee","Category","Memo","Outflow","Inflow","Cleared"]
@@ -24,5 +24,5 @@ for account_name in data['Account'].unique():
     account.reindex(reindex_columns)
 
     #You will have one csv for each account
-    with open('~/Desktop' + each + '_ynab.csv', 'w') as sliced:
+    with open(account_name + '_ynab.csv', 'w') as sliced:
         account.to_csv(path_or_buf=sliced, index=False, columns=output_columns)
